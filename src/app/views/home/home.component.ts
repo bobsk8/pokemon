@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public pokemonList: PokemonList = new PokemonList();
   public pokemonFightList: Pokemon[] = [];
   public submitted = false;
+  public loading = false;
   private subs: Subscription[] = [];
   constructor(
     private pokemonService: PokemonsService
@@ -44,12 +45,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public fight(): void {
-    this.submitted = true;
+    this.submitted = true;    
     if (this.submitted && this.pokemonFightList.length === 0) {
       return;
     }
-    this.pokemonWinner = this.getWinner();
-    this.removeLosers();
+    this.loading = true;
+    setTimeout(() => {      
+      this.pokemonWinner = this.getWinner();
+      this.removeLosers();
+      this.loading = false;
+    }, 1000);
   }
 
   public clear(): void {
