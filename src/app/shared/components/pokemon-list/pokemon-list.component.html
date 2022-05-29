@@ -1,0 +1,16 @@
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let prokemon of pokemons">
+            <td>{{prokemon.image}}</td>
+            <td>{{prokemon.name}}</td>
+            <td><button type="button" class="btn btn-primary" (click)="selectForFight(prokemon)">Select for Fight</button></td>
+        </tr>
+    </tbody>
+</table>
